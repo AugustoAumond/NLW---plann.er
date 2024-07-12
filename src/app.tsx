@@ -3,7 +3,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import { CreateTripPage } from "./pages/create-trip";
+import { CreateTripPage } from "./pages";
 import { TripDetailsPage } from "./trip-details";
 
 const router = createBrowserRouter([
