@@ -35,8 +35,6 @@ function closeDatePicker(){
     return setIsDatePickerOpen(false);
 }
 
-const currentDate = new Date;
-
 const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStartAndDates.to ? `${format(eventStartAndDates.from, 'd' )} de ${format(eventStartAndDates.from, 'LLL')} até ${format(eventStartAndDates.to, 'd')} de ${format(eventStartAndDates.to, 'LLL')}` : null;
 
     return (
