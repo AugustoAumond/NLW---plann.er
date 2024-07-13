@@ -6,11 +6,15 @@ import { Button } from "../components/button"
 interface ConfirmTripModalProps{
     closeConfirmTripModal: ()=> void
     createTrip: (event: FormEvent<HTMLFormElement>) => void
+    setOwnerName: (name: string) => void;
+    setOwnerEmail: (email: string) => void;
 }
 
 export function ConfirmTripModal({
 closeConfirmTripModal,
-createTrip
+createTrip,
+setOwnerName,
+setOwnerEmail
 }: ConfirmTripModalProps){
     return (
     <div className='fixed inset-8 bg-black/60 flex items-center justify-center'>
@@ -32,13 +36,13 @@ createTrip
                 <div className='py-2.5 px-4 border bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
                     <User className='text-zinc-900 size-5'/>
 
-                    <input type="text" name='name' placeholder='Seu nome completo!' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+                    <input type="text" name='name' onChange={event => setOwnerName(event.target.value)} placeholder='Seu nome completo!' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
                 </div>
 
                 <div className='h-14 px-4 border bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
                     <User className='text-zinc-900 size-5'/>
 
-                    <input type="email" name='email' placeholder='Seu email pessoal' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+                    <input type="email" name='email' onChange={event => setOwnerEmail(event.target.value)} placeholder='Seu email pessoal' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
                 </div>
 
                 <Button type="submit" size="full">

@@ -9,3 +9,12 @@
 input {
     color-scheme: dark
 }
+
+.rdp-day_selected {
+    background: #8EF264;
+    color: black;
+}
+
+#day {
+    background: #8EF264;
+}
