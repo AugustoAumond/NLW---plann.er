@@ -8,13 +8,15 @@ interface ConfirmTripModalProps{
     createTrip: (event: FormEvent<HTMLFormElement>) => void
     setOwnerName: (name: string) => void;
     setOwnerEmail: (email: string) => void;
+    isInvalidOwnerNameOrEmail: boolean
 }
 
 export function ConfirmTripModal({
 closeConfirmTripModal,
 createTrip,
 setOwnerName,
-setOwnerEmail
+setOwnerEmail,
+isInvalidOwnerNameOrEmail
 }: ConfirmTripModalProps){
     return (
     <div className='fixed inset-8 bg-black/60 flex items-center justify-center'>
@@ -44,6 +46,12 @@ setOwnerEmail
 
                     <input type="email" name='email' onChange={event => setOwnerEmail(event.target.value)} placeholder='Seu email pessoal' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
                 </div>
+
+                {isInvalidOwnerNameOrEmail === true ? (
+                    <div className='w-full h-10 text-red-600 text-lg'>
+                        Nome ou Email não informada!
+                    </ div>
+                ) : <></>}
 
                 <Button type="submit" size="full">
                     Confirmar criação da viagem

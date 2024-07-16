@@ -35,6 +35,8 @@ function closeDatePicker(){
     return setIsDatePickerOpen(false);
 }
 
+
+
 const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStartAndDates.to ? `${format(eventStartAndDates.from, 'd' )} de ${format(eventStartAndDates.from, 'LLL')} até ${format(eventStartAndDates.to, 'd')} de ${format(eventStartAndDates.to, 'LLL')}` : null;
 
     return (
@@ -65,7 +67,7 @@ const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStar
                             </div>
                         </div>
 
-                        <DayPicker mode="range"  selected={eventStartAndDates} onSelect={setEventStartAndDates}/>
+                        <DayPicker mode="range" selected={eventStartAndDates} onSelect={setEventStartAndDates}/>
                     </div>
                 </div>
             )}

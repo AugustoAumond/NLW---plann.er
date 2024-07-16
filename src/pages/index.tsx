@@ -19,13 +19,21 @@ export function CreateTripPage() {
     const [ownerName, setOwnerName] = useState('');
     const [ownerEmail, setOwnerEmail] = useState('');
     const [eventStartAndDates, setEventStartAndDates] = useState<DateRange | undefined>()
+    const [isInvalidNameOrDate, setIsInvalidNameOrDate] = useState(false);
+    const [isInvalidGuest, setIsInvalidGuest] = useState(false);
+    const [isInvalidOwnerNameOrEmail, setIsInvalidOwnerNameOrEmail] = useState(false);
 
     const [emailsToInvite, setEmailsToInvite] = useState([
         'augustoaumondrs@gmail.com', 'hahahaha@hsuahsuah.com'
     ])
 
     function openGuestsInput () {
-        setGuestsInputOpen(true);
+        if (destination === '' || eventStartAndDates === undefined){
+            return setIsInvalidNameOrDate(true);
+        } else {
+            setIsInvalidNameOrDate(false);
+            setGuestsInputOpen(true);
+        }
     }
 
     function closeGuestsInput () {
@@ -41,7 +49,12 @@ export function CreateTripPage() {
     }
 
     function openConfirmTripModalOpen (){
-        setIsConfirmTripModalOpen(true);
+        if (emailsToInvite.length === 0 ){
+            return setIsInvalidGuest(true);
+        } else {
+            setIsInvalidGuest(false);
+            setIsConfirmTripModalOpen(true);
+        }
     }
 
     function closeConfirmTripModalOpen (){
@@ -79,32 +92,12 @@ export function CreateTripPage() {
         const from = eventStartAndDates?.from;
         const to =  eventStartAndDates?.to;
 
-        const currentDate = new Date;
-
-        if (!destination){
-            console.log('não há destino')
-            return
-        }
-
-        if (eventStartAndDates?.from){
-            if ((currentDate < eventStartAndDates?.from) === false){
-                return
-            }
-        }
-
         if (!ownerEmail || !ownerName){
             console.log('não há nome ou email')
-            return
-        }
+            return setIsInvalidOwnerNameOrEmail(true)
+        } 
 
-        if (emailsToInvite.length === 0){
-            return
-        }
-
-        if (!eventStartAndDates?.from || !eventStartAndDates?.to ){
-            console.log('não há data')
-            return
-        }
+        setIsInvalidOwnerNameOrEmail(false)
 
         const response = await api.post('/trips', {
             destination,
@@ -139,7 +132,7 @@ export function CreateTripPage() {
                 setDestination={setDestination}
                 eventStartAndDates={eventStartAndDates}
                 setEventStartAndDates={setEventStartAndDates}
-                />
+                />                
 
                 {isGuestsInputOpen && (   
                     <InviteGuestsStep 
@@ -149,6 +142,18 @@ export function CreateTripPage() {
                     />
                 )}
             </div>
+
+            {isInvalidNameOrDate === true ? (
+                <div className='w-full h-10 text-red-600 text-lg'>
+                    Destino ou Data não informada!
+                </ div>
+            ) : <></>}
+
+            {isInvalidGuest === true ? (
+                <div className='w-full h-10 text-red-600 text-lg'>
+                    É obrigatorio ter ao menos 1 convidado!
+                </ div>
+            ) : <></>}
 
             <p className="text-zinc-500 text-sm">Ao planejar sua viagem pela plann.er você automaticamente concorda <br/>
             com nossos <a href="#" className="text-zinc-300 underline"> termos de uso </a> e <a href="#" className="text-zinc-300 underline">políticas de privacidade</a>.</p>
@@ -168,6 +173,7 @@ export function CreateTripPage() {
                 closeConfirmTripModal={closeConfirmTripModalOpen}
                 setOwnerName={setOwnerName}
                 setOwnerEmail={setOwnerEmail}
+                isInvalidOwnerNameOrEmail={isInvalidOwnerNameOrEmail}
             />
             )}
         </div>
