@@ -18,3 +18,10 @@ input {
 #day {
     background: #8EF264;
 }
+
+@media(max-width: 640px) {
+    .rdp {
+        --rdp-cell-size: 26px;
+        --rdp-caption-font-size: 16px;
+    }
+}
