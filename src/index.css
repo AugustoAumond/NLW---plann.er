@@ -25,3 +25,8 @@ input {
         --rdp-caption-font-size: 16px;
     }
 }
+
+.rdp-day_selected:hover {
+    color: #black;
+    background-color: #8EF264;
+}

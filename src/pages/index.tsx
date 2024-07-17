@@ -178,6 +178,8 @@ export function CreateTripPage() {
                 setOwnerName={setOwnerName}
                 setOwnerEmail={setOwnerEmail}
                 isInvalidOwnerNameOrEmail={isInvalidOwnerNameOrEmail}
+                destination={destination}
+                eventStartAndDates={eventStartAndDates}
             />
             )}
         </div>

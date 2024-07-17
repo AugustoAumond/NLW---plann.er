@@ -28,13 +28,14 @@ export function DestinationAndDateStep({
 const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
 function openDatePicker(){
+    const month = document.getElementsByName('month').values;
+    console.log(month)
     return setIsDatePickerOpen(true);
 }
 
 function closeDatePicker(){
     return setIsDatePickerOpen(false);
 }
-
 
 
 const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStartAndDates.to ? `${format(eventStartAndDates.from, 'd' )} de ${format(eventStartAndDates.from, 'LLL')} até ${format(eventStartAndDates.to, 'd')} de ${format(eventStartAndDates.to, 'LLL')}` : null;
@@ -68,7 +69,7 @@ const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStar
                                 </div>
                             </div>
 
-                            <DayPicker mode="range" selected={eventStartAndDates} onSelect={setEventStartAndDates}/>
+                            <DayPicker fromDate={new Date()} showOutsideDays mode="range" selected={eventStartAndDates} onSelect={setEventStartAndDates}/>
                         </div>
                     </div>
                 )}
