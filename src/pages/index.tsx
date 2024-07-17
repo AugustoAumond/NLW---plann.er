@@ -19,6 +19,7 @@ export function CreateTripPage() {
     const [ownerName, setOwnerName] = useState('');
     const [ownerEmail, setOwnerEmail] = useState('');
     const [eventStartAndDates, setEventStartAndDates] = useState<DateRange | undefined>()
+
     const [isInvalidNameOrDate, setIsInvalidNameOrDate] = useState(false);
     const [isInvalidGuest, setIsInvalidGuest] = useState(false);
     const [isInvalidOwnerNameOrEmail, setIsInvalidOwnerNameOrEmail] = useState(false);
@@ -37,6 +38,7 @@ export function CreateTripPage() {
     }
 
     function closeGuestsInput () {
+        setIsInvalidGuest(false);
         setGuestsInputOpen(false);
     }
 
@@ -58,6 +60,7 @@ export function CreateTripPage() {
     }
 
     function closeConfirmTripModalOpen (){
+        setIsInvalidOwnerNameOrEmail(false);
         setIsConfirmTripModalOpen(false);
     }
 
@@ -76,6 +79,7 @@ export function CreateTripPage() {
         }
 
         setEmailsToInvite([...emailsToInvite, email])
+        setIsInvalidGuest(false);
 
         event.currentTarget.reset();
     }
@@ -121,7 +125,7 @@ export function CreateTripPage() {
             <div className='flex flex-col items-center gap-3'>
                 <img src="./logo.svg" alt="plann.er" />
 
-                <p className="text-zinc-300 text-lg">Convide seus amigos e planeje sua próxima viagem!</p>
+                <p className="text-zinc-300 text-sm sm:text-lg">Convide seus amigos e planeje sua próxima viagem!</p>
             </div>
 
             <div className='space-y-4'>
@@ -144,18 +148,18 @@ export function CreateTripPage() {
             </div>
 
             {isInvalidNameOrDate === true ? (
-                <div className='w-full h-10 text-red-600 text-lg'>
+                <div className='w-full h-10 text-red-600 text-sm sm:text-lg'>
                     Destino ou Data não informada!
                 </ div>
             ) : <></>}
 
             {isInvalidGuest === true ? (
-                <div className='w-full h-10 text-red-600 text-lg'>
+                <div className='w-full h-10 text-red-600  text-sm sm:text-lg'>
                     É obrigatorio ter ao menos 1 convidado!
                 </ div>
             ) : <></>}
 
-            <p className="text-zinc-500 text-sm">Ao planejar sua viagem pela plann.er você automaticamente concorda <br/>
+            <p className="text-zinc-500 text-[8px] sm:text-sm">Ao planejar sua viagem pela plann.er você automaticamente concorda <br/>
             com nossos <a href="#" className="text-zinc-300 underline"> termos de uso </a> e <a href="#" className="text-zinc-300 underline">políticas de privacidade</a>.</p>
 
             {isGuestsModalOpen && (

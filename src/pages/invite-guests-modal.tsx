@@ -20,23 +20,23 @@ export function InviteGuestsModal ({
     <div className='w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
         <div className='space-y-2'>
             <div className='flex justify-between items-center'>
-                <h2 className='text-lg font-semibold'>Selecionar convidados</h2>
+                <h2 className='text-base sm:text-lg font-semibold'>Selecionar convidados</h2>
 
                 <button onClick={closeGuestsModal}>
                     <X className='size-5'/>
                 </button>
             </div>
 
-            <p className='text-sm text-zinc-400 text-left'>Os convidados irão receber e-mails para confirmar a participação na viagem.</p>
+            <p className='text-xs text-zinc-400 text-left sm:text-sm'>Os convidados irão receber e-mails para confirmar a participação na viagem.</p>
         </div>
 
         <div className='flex flex-wrap gap-2'>
             {emailsToInvite.map((email)=>{
                 return(
                     <div key={email} className='py-1.5 px-2.5 rounded-md bg-zinc-800 flex items-center gap-2'>
-                        <span className='text-zinc-300'>{email}</span>
+                        <span className='text-xs  text-zinc-300 sm:text-base'>{email}</span>
                         <button type='button' onClick={() => removeEmailsFromInvites(email)}>
-                            <X className='size-4 text-zinc-400'/>
+                            <X className='size-3 sm:size-4 text-zinc-400'/>
                         </button>
                     </div>    
                 )
@@ -45,16 +45,16 @@ export function InviteGuestsModal ({
 
         <div className='w-full h-px bg-zinc-800'/>
 
-        <form onSubmit={addNewEmailToInvite} className='p-2.5 border bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
-            <div className='px-2 flex gap-2 items-center flex-1'>
-                <AtSign className='text-zinc-900 size-5'/>
+        <form onSubmit={addNewEmailToInvite} className='p-2.5 border bg-zinc-950 border-zinc-800 rounded-lg flex flex-col items-center gap-2 h-24 sm:h-20 sm:flex-row'>
+            <div className='px-2 flex gap-2 items-center flex-1 border-b-zinc-400 border-b-[1px] w-full sm:border-b-0'>
+                <AtSign className='text-zinc-800 size-3.5 sm:size-5'/>
 
-                <input type="email" name='email' placeholder='Digite o email do convidado' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+                <input type="email" name='email' placeholder='Digite o email do convidado' className="bg-transparent text-sm placeholder-zinc-400 outline-none flex-1 md:text-lg"/>
             </div>
 
             <Button type="submit" >
                 Convidar
-                <Plus className='size-5'/>  
+                <Plus className='size-3.5 sm:size-5'/>  
             </Button>
         </form>
     </div>

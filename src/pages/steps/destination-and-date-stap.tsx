@@ -42,14 +42,14 @@ const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStar
     return (
         <div className="h-28 bg-zinc-900 px-4 py-2 rounded-xl flex items-center shadow-shape gap-3 flex-col sm:flex-row sm:h-16">
             <div className='flex items-center gap-2 flex-1 border-b-zinc-400 border-b-[1px] w-full sm:border-b-0'>
-                <MapPin className='size-5 text-zinc-400'/>
+                <MapPin className='size-3.5 sm:size-5 text-zinc-400'/>
 
                 <input disabled={isGuestsInputOpen} onChange={(event)=> setDestination(event.target.value)} type="text" placeholder="Para onde você vai?" className="bg-transparent text-sm placeholder-zinc-400 outline-none flex-1  sm:text-lg" />
             </div>
 
-            <div className="flex h-10 w-full sm:w-[unset]">
+            <div className="flex items-center gap-2 h-10 w-full sm:w-[unset]">
                 <button onClick={openDatePicker} disabled={isGuestsInputOpen} className='flex-1 flex items-center text-left gap-2 outline-none sm:w-[240px]'>
-                    <Calendar className='size-5 text-zinc-400'/>
+                    <Calendar className='size-3.5 sm:size-5 text-zinc-400'/>
                     <span className="text-sm text-zinc-400 truncate w-40 flex-1 sm:text-lg ">
                         {displayedDate || 'Quando?'}
                     </span>
@@ -63,7 +63,7 @@ const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStar
                                     <h2 className='text-xs font-semibold sm:text-lg'>Selecione a data!</h2>
 
                                     <button>
-                                        <X onClick={closeDatePicker} className='size-5'/>
+                                        <X onClick={closeDatePicker} className=' size-5'/>
                                     </button>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@ const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStar
                 {isGuestsInputOpen ? 
                 (<Button  onClick={closeGuestsInput} variant="secundary">
                     Alterar local/data
-                    <Settings2 className='size-5'/>
+                    <Settings2 className='size-3.5 sm:size-5'/>
                 </Button>)
                 : (
                 <Button onClick={openGuestsInput} variant="primary">
