@@ -23,15 +23,15 @@ export function TripDetailsPage() {
         <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
             <DestinationAndDateHeader/>
 
-            <main className="flex gap-16 px-4">
+            <main className="flex gap-16 px-4 flex-col md:flex-row">
                 <div className="flex-1 space-y-6">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-3xl font-semibold">
+                        <h2 className="text-lg  md:text-3xl font-semibold truncate">
                             Atividades
                         </h2>
 
                         <Button onClick={openCreateActivityModal}>
-                            <Plus className='size-5'/>  
+                            <Plus className='size-3.5 md:size-5'/>  
                             Cadastrar Atividade
                         </Button>
                     </div>
@@ -39,7 +39,7 @@ export function TripDetailsPage() {
                     <Activity/>
                 </div>
 
-                <div className="w-80 space-y-6">
+                <div className="w-full md:w-80 space-y-6">
                     <ImportantLinks/>
 
                     <div className='w-full h-px bg-zinc-600'></div>

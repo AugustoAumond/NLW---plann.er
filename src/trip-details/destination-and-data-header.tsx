@@ -33,17 +33,17 @@ console.log(displayedDate)
     return(
     <div className="flex-1 px-3 h-16 rounded-xl bg-zinc-900 shadow-shape flex items-center justify-between">
         <div className="flex items-center gap-2">
-            <MapPin className="size-5 text-zinc-400"/>
-            <span className=" text-zinc-100">
+            <MapPin className="size-3.5 md:size-5 text-zinc-400"/>
+            <span className=" text-zinc-100 md:text-base text-xs">
                 {trip?.destination}
             </span> 
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className=" flex items-center gap-5">
             <div className="px-3 h-16 rounded-xl bg-zinc-900 shadow-shape flex items-center justify-between">
                 <span className="flex items-center gap-2">
-                    <Calendar className="size-5 text-zinc-400"/>
-                    <span className="text-zinc-100">
+                    <Calendar className="size-3.5 md:size-5 text-zinc-400"/>
+                    <span className="text-zinc-100 md:text-base text-xs">
                         {displayedDate}
                     </span> 
                 </span>
@@ -53,7 +53,7 @@ console.log(displayedDate)
 
             <Button variant='secundary'> 
                 Alterar local/data
-                <Settings2 className='size-5'/>
+                <Settings2 className='size-3.5 md:size-5'/>
             </Button>
         </div>
     </div>
