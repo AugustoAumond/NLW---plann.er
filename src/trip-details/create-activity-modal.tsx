@@ -3,6 +3,7 @@ import { Button } from "../components/button";
 import { FormEvent } from "react";
 import { api } from "../lib/axios";
 import { useParams } from "react-router-dom";
+import { Inputs } from "../components/inputs";
 
 interface CreateActivtyModalProps {
     closeCreateActivityModal: () => void;
@@ -49,19 +50,17 @@ export function CreateActivityModal({
                 </div>
 
                 <form onSubmit={createAcetivity} className='space-y-3'>
-                    <div className='py-2.5 px-4 border bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
+                    <Inputs>
                         <Tag className='text-zinc-900 size-3.5 sm:size-5'/>
 
                         <input type="text" name='title' placeholder='Qual atividade?' className="bg-transparent text-sm sm:text-lg placeholder-zinc-400 outline-none flex-1"/>
-                    </div>
+                    </Inputs>
 
-                    <div className="flex items-center gap-2">
-                        <div className='flex-1 h-14 px-4 border bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
-                            <Calendar className='text-zinc-900 size-3.5 sm:size-5'/>
+                    <Inputs>
+                        <Calendar className='text-zinc-900 size-3.5 sm:size-5'/>
         
-                            <input type="datetime-local" name="occurs_at" placeholder='Data e horário da atividade' className="bg-transparent text-sm sm:text-lg placeholder-zinc-400 outline-none flex-1 "/>
-                        </div>
-                    </div>
+                        <input type="datetime-local" name="occurs_at" placeholder='Data e horário da atividade' className="bg-transparent text-sm sm:text-lg placeholder-zinc-400 outline-none flex-1 "/>
+                    </Inputs>
             
                     <Button size="full">
                         Salvar atividade

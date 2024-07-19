@@ -3,6 +3,7 @@ import { FormEvent } from "react"
 import { Button } from "../components/button"
 import { DateRange } from "react-day-picker"
 import { format } from "date-fns"
+import { Inputs } from "../components/inputs"
 
 
 interface ConfirmTripModalProps{
@@ -44,17 +45,17 @@ eventStartAndDates
             </div>
 
             <form onSubmit={createTrip} className='space-y-3'>
-                <div className='py-2.5 px-4 border bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
+                <Inputs>
                     <User className='text-zinc-800 size-3.5 sm:size-5'/>
 
                     <input type="text" name='name' onChange={event => setOwnerName(event.target.value)} placeholder='Seu nome completo!' className="bg-transparent text-sm sm:text-lg placeholder-zinc-400 outline-none flex-1"/>
-                </div>
+                </Inputs>
 
-                <div className='h-14 px-4 border bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
+                <Inputs>
                     <AtSign className='text-zinc-800 size-3.5 sm:size-5'/>
 
                     <input type="email" name='email' onChange={event => setOwnerEmail(event.target.value)} placeholder='Seu email pessoal' className="bg-transparent text-sm sm:text-lg placeholder-zinc-400 outline-none flex-1"/>
-                </div>
+                </Inputs>
 
                 {isInvalidOwnerNameOrEmail === true ? (
                     <div className='w-full h-10 text-red-600  text-sm sm:text-lg'>
