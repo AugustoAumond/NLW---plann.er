@@ -1,7 +1,7 @@
 import { Calendar,  MapPin, Settings2, X } from "lucide-react"
 import { Button } from "../../components/button"
 import { useState } from "react"
-import { format } from "date-fns"
+import { format, isToday } from "date-fns"
 import { DateRange, DayPicker } from "react-day-picker"
 import 'react-day-picker/dist/style.css';
 
@@ -69,7 +69,7 @@ const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStar
                                 </div>
                             </div>
 
-                            <DayPicker fromDate={new Date()} showOutsideDays mode="range" selected={eventStartAndDates} onSelect={setEventStartAndDates}/>
+                            <DayPicker fromDate={new Date()} disabled={isToday} showOutsideDays mode="range" selected={eventStartAndDates} onSelect={setEventStartAndDates}/>
                         </div>
                     </div>
                 )}
