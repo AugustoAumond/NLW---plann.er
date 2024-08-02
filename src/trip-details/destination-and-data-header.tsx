@@ -9,14 +9,6 @@ import { DateRange, DayPicker } from "react-day-picker"
 import 'react-day-picker/dist/style.css';
 
 
-interface Trip {
-    id: 'string'
-    destination: string,
-    starts_at: string,
-    ends_at: string,
-    is_confirmed: boolean
-}
-
 export function DestinationAndDateHeader(){
     const {tripId} = useParams();
     const [change, setChange] = useState(false);
