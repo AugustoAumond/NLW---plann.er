@@ -9,11 +9,21 @@ import { DateRange, DayPicker } from "react-day-picker"
 import 'react-day-picker/dist/style.css';
 
 
+interface Trip {
+    id: 'string'
+    destination: string,
+    starts_at: string,
+    ends_at: string,
+    is_confirmed: boolean
+}
+
 export function DestinationAndDateHeader(){
     const {tripId} = useParams();
+    const [trip, setTrip] = useState<Trip | undefined>();
     const [change, setChange] = useState(false);
     const [destination, setDestination] = useState('');
     const [eventStartAndDates, setEventStartAndDates] = useState<DateRange | undefined>()
+    const [isGuestsInputOpen, setGuestsInputOpen] = useState(false);
     
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
@@ -90,7 +100,7 @@ export function DestinationAndDateHeader(){
             </div>
             :
             <div className="flex items-center gap-2 h-10 w-full sm:w-[unset]">
-                <button onClick={openDatePicker} className='flex-1 flex items-center text-left gap-2 outline-none sm:w-[240px]'>
+                <button onClick={openDatePicker} disabled={isGuestsInputOpen} className='flex-1 flex items-center text-left gap-2 outline-none sm:w-[240px]'>
                     <Calendar className='size-3.5 sm:size-5 text-zinc-400'/>
                     <span className="text-sm text-zinc-400 truncate w-40 flex-1 sm:text-lg ">
                         {displayedDate || 'Quando?'}
