@@ -8,7 +8,7 @@ import { ptBR } from "date-fns/locale";
 interface Activities {
     date: string
     activities: {
-        id: 'string'
+        id: string,
         title: string,
         occurs_at: string,
     }[]
