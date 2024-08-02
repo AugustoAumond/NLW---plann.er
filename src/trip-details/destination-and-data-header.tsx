@@ -19,11 +19,10 @@ interface Trip {
 
 export function DestinationAndDateHeader(){
     const {tripId} = useParams();
-    const [trip, setTrip] = useState<Trip | undefined>();
     const [change, setChange] = useState(false);
     const [destination, setDestination] = useState('');
     const [eventStartAndDates, setEventStartAndDates] = useState<DateRange | undefined>()
-    const [isGuestsInputOpen, setGuestsInputOpen] = useState(false);
+    const [isGuestsInputOpen] = useState(false);
     
 
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
