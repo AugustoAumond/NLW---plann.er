@@ -24,9 +24,7 @@ export function CreateTripPage() {
     const [isInvalidGuest, setIsInvalidGuest] = useState(false);
     const [isInvalidOwnerNameOrEmail, setIsInvalidOwnerNameOrEmail] = useState(false);
 
-    const [emailsToInvite, setEmailsToInvite] = useState([
-        'augustoaumondrs@gmail.com', 'hahahaha@hsuahsuah.com'
-    ])
+    const [emailsToInvite, setEmailsToInvite] = useState([''])
 
     function openGuestsInput () {
         if (destination === '' || eventStartAndDates === undefined){
