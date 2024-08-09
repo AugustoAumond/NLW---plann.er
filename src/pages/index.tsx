@@ -24,7 +24,9 @@ export function CreateTripPage() {
     const [isInvalidGuest, setIsInvalidGuest] = useState(false);
     const [isInvalidOwnerNameOrEmail, setIsInvalidOwnerNameOrEmail] = useState(false);
 
-    const [emailsToInvite, setEmailsToInvite] = useState([''])
+    const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
+
+    const [load, setLoad] = useState(false)
 
     function openGuestsInput () {
         if (destination === '' || eventStartAndDates === undefined){
@@ -101,6 +103,8 @@ export function CreateTripPage() {
 
         setIsInvalidOwnerNameOrEmail(false)
 
+        setLoad(true);
+
         const response = await api.post('/trips', {
             destination,
             starts_at: from,
@@ -111,6 +115,7 @@ export function CreateTripPage() {
         })
 
         const { tripId } = response.data
+
 
         navigate(`/trips/${tripId}`)
 
@@ -178,6 +183,7 @@ export function CreateTripPage() {
                 isInvalidOwnerNameOrEmail={isInvalidOwnerNameOrEmail}
                 destination={destination}
                 eventStartAndDates={eventStartAndDates}
+                load={load}
             />
             )}
         </div>

@@ -14,6 +14,7 @@ interface ConfirmTripModalProps{
     isInvalidOwnerNameOrEmail: boolean
     eventStartAndDates: DateRange | undefined
     destination: string
+    load: boolean
 }
 
 export function ConfirmTripModal({
@@ -23,14 +24,15 @@ setOwnerName,
 setOwnerEmail,
 isInvalidOwnerNameOrEmail,
 destination,
-eventStartAndDates
+eventStartAndDates,
+load
 }: ConfirmTripModalProps){
 
     const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStartAndDates.to ? `${format(eventStartAndDates.from, 'd' )} de ${format(eventStartAndDates.from, 'LLL')} até ${format(eventStartAndDates.to, 'd')} de ${format(eventStartAndDates.to, 'LLL')}` : null;
 
     return (
     <div className='fixed inset-8 bg-black/60 flex items-center justify-center'>
-        <div className='w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
+        <div className='relative w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5'>
             <div className='space-y-2'>
                 <div className='flex justify-between items-center'>
                     <h2 className='text-base sm:text-lg font-semibold'>Confirmar criação de viagem!</h2>
@@ -67,6 +69,13 @@ eventStartAndDates
                     Confirmar criação da viagem
                 </Button>
             </form>
+
+            {load && (
+                <div className="absolute top-[-20px] left-0 w-full h-full shadow-shape bg-zinc-900 rounded-lg flex items-center justify-center">
+                    <span className="text-3xl animate-pulse opacity-75">Carregando ...</span>
+                </div>
+            )}
+        
         </div>
     </div>
     )
