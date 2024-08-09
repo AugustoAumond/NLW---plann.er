@@ -27,6 +27,7 @@ export function CreateTripPage() {
     const [emailsToInvite, setEmailsToInvite] = useState<string[]>([])
 
     const [load, setLoad] = useState(false)
+    const [text, setText] = useState('Carregando ...');
 
     function openGuestsInput () {
         if (destination === '' || eventStartAndDates === undefined){
@@ -107,6 +108,15 @@ export function CreateTripPage() {
 
         setLoad(true);
 
+        setTimeout(()=>{
+            setText("Falha de conexão, tente novamente!");
+        }, 12000)
+
+
+        setTimeout(()=>{
+            setLoad(false);
+        }, 15000)
+
         await api.post('/trips', {
             destination,
             starts_at: from,
@@ -114,7 +124,7 @@ export function CreateTripPage() {
             emails_to_invite: emailsToInvite,
             owner_name: ownerName,
             owner_email: ownerEmail,
-        }).then((data)=>{
+        }).then((data, )=>{
 
             tripId = data.data.tripId
         })
@@ -187,6 +197,7 @@ export function CreateTripPage() {
                 destination={destination}
                 eventStartAndDates={eventStartAndDates}
                 load={load}
+                text={text}
             />
             )}
         </div>

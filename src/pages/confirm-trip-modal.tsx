@@ -15,6 +15,7 @@ interface ConfirmTripModalProps{
     eventStartAndDates: DateRange | undefined
     destination: string
     load: boolean
+    text: string
 }
 
 export function ConfirmTripModal({
@@ -25,7 +26,8 @@ setOwnerEmail,
 isInvalidOwnerNameOrEmail,
 destination,
 eventStartAndDates,
-load
+load,
+text
 }: ConfirmTripModalProps){
 
     const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStartAndDates.to ? `${format(eventStartAndDates.from, 'd' )} de ${format(eventStartAndDates.from, 'LLL')} até ${format(eventStartAndDates.to, 'd')} de ${format(eventStartAndDates.to, 'LLL')}` : null;
@@ -72,7 +74,11 @@ load
 
             {load && (
                 <div className="absolute top-[-20px] left-0 w-full h-full shadow-shape bg-zinc-900 rounded-lg flex items-center justify-center">
-                    <span className="text-3xl animate-pulse opacity-75">Carregando ...</span>
+                    <span className="text-3xl animate-pulse opacity-75">
+                        
+                        {text}
+
+                    </span>
                 </div>
             )}
         
