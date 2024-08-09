@@ -103,18 +103,21 @@ export function CreateTripPage() {
 
         setIsInvalidOwnerNameOrEmail(false)
 
-        setLoad(true);
+        let tripId: any = '';
 
-        const response = await api.post('/trips', {
+        await api.post('/trips', {
             destination,
             starts_at: from,
             ends_at: to,
             emails_to_invite: emailsToInvite,
             owner_name: ownerName,
             owner_email: ownerEmail,
-        })
+        }).then((data)=>{
 
-        const { tripId } = response.data
+            setLoad(true);
+            
+            tripId = data.data.tripId
+        })
 
 
         navigate(`/trips/${tripId}`)
