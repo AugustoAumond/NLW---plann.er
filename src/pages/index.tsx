@@ -105,6 +105,8 @@ export function CreateTripPage() {
 
         let tripId: any = '';
 
+        setLoad(true);
+
         await api.post('/trips', {
             destination,
             starts_at: from,
@@ -114,8 +116,6 @@ export function CreateTripPage() {
             owner_email: ownerEmail,
         }).then((data)=>{
 
-            setLoad(true);
-            
             tripId = data.data.tripId
         })
 
