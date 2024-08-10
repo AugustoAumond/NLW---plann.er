@@ -4,6 +4,7 @@ import { useState } from "react"
 import { format, isToday } from "date-fns"
 import { DateRange, DayPicker } from "react-day-picker"
 import 'react-day-picker/dist/style.css';
+import { ptBR } from "date-fns/locale"
 
 interface DestinationAndDateStepProps {
     isGuestsInputOpen: boolean
@@ -38,7 +39,7 @@ function closeDatePicker(){
 }
 
 
-const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStartAndDates.to ? `${format(eventStartAndDates.from, 'd' )} de ${format(eventStartAndDates.from, 'LLL')} até ${format(eventStartAndDates.to, 'd')} de ${format(eventStartAndDates.to, 'LLL')}` : null;
+const displayedDate = eventStartAndDates && eventStartAndDates.from && eventStartAndDates.to ? `${format(eventStartAndDates.from, 'd' )} de ${format(eventStartAndDates.from, 'LLL',{locale: ptBR})} até ${format(eventStartAndDates.to, 'd')} de ${format(eventStartAndDates.to, 'LLL', {locale: ptBR})}` : null;
 
     return (
         <div className="h-28 bg-zinc-900 px-4 py-2 rounded-xl flex items-center shadow-shape gap-3 flex-col sm:flex-row sm:h-16">
