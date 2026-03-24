@@ -20,7 +20,7 @@ export function Activity (){
     const [activities, setActivities] = useState<Activities[]>([]);
 
     useEffect(()=>{
-        api.get(`/trips/${tripId}/activities`).then(response =>{
+        api.get(`/trips/${tripId}/activities`).then((response: any) =>{
             setActivities(response.data.activities);
         })
     },[tripId])
